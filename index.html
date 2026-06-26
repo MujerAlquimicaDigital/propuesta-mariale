@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta de Acompañamiento · Mariale · Mujer Alquímica Digital</title>
+<style>
+  @font-face {
+    font-family: 'Michelia';
+    src: url('assets/Michelia.otf') format('opentype');
+  }
+
+  :root {
+    --verde-salvia:  #97a585;
+    --azul-noche:    #263549;
+    --dorado-claro:  #f7d795;
+    --dorado-medio:  #d4b87e;
+    --dorado-oscuro: #a18348;
+    --crema:         #e9ddc3;
+    --terracota:     #a46448;
+    --negro:         #0a0a0a;
+    --blanco:        #fdfaf5;
+    --grad-oro: linear-gradient(135deg, #a18348 0%, #d4b87e 50%, #f7d795 100%);
+    --grad-fondo: linear-gradient(160deg, #1a2738 0%, #263549 60%, #1e3a2f 100%);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--blanco);
+    color: var(--azul-noche);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, .brand {
+    font-family: 'Michelia', 'Raleway', serif;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--grad-fondo);
+    color: var(--blanco);
+    padding: 90px 0 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(247,215,149,0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .hero .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 12px;
+    color: var(--dorado-claro);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 38px;
+    background: var(--grad-oro);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+  }
+  .hero .subtitle {
+    font-size: 17px;
+    color: var(--crema);
+    max-width: 560px;
+    margin: 18px auto 0;
+    font-style: italic;
+  }
+  .hero .icono {
+    width: 56px;
+    height: auto;
+    margin: 0 auto 18px;
+    display: block;
+    filter: drop-shadow(0 6px 16px rgba(247,215,149,0.35));
+  }
+
+  .hero .for {
+    margin-top: 30px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--verde-salvia);
+  }
+  .hero .for strong {
+    display: block;
+    font-family: 'Michelia', serif;
+    font-size: 18px;
+    color: var(--blanco);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    margin-top: 4px;
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 60px 0; }
+  section.alt { background: var(--crema); }
+
+  .section-title {
+    text-align: center;
+    font-size: 28px;
+    color: var(--azul-noche);
+    margin-bottom: 14px;
+  }
+  .section-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--grad-oro);
+    margin: 0 auto 36px;
+  }
+
+  .mision-box {
+    background: var(--azul-noche);
+    color: var(--blanco);
+    border-radius: 18px;
+    padding: 44px 40px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.7;
+    box-shadow: 0 18px 40px -18px rgba(38,53,73,0.45);
+  }
+  .mision-box .label {
+    display: block;
+    font-family: 'Michelia', serif;
+    font-weight: 400;
+    color: var(--dorado-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 22px;
+  }
+
+  /* ===== FASES ===== */
+  .fases-track {
+    position: relative;
+    padding-left: 6px;
+  }
+  .fases-track::before {
+    content: "";
+    position: absolute;
+    left: 38px;
+    top: 16px;
+    bottom: 16px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--dorado-medio), rgba(164,131,72,0.15));
+  }
+  .fase {
+    position: relative;
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 22px;
+    margin-bottom: 28px;
+    background: var(--blanco);
+    border-radius: 18px;
+    padding: 32px 32px 32px 0;
+    box-shadow: 0 16px 36px -22px rgba(10,10,10,0.25);
+    transition: transform 0.25s ease;
+  }
+  .fase::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    border-radius: 18px 0 0 18px;
+    background: var(--grad-oro);
+  }
+  .fase-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-left: 8px;
+  }
+  .fase-num .circulo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--grad-fondo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px -8px rgba(38,53,73,0.5);
+    flex-shrink: 0;
+  }
+  .fase-num span {
+    font-family: 'Michelia', serif;
+    font-size: 26px;
+    color: var(--dorado-claro);
+    line-height: 1;
+  }
+  .fase-num small {
+    white-space: nowrap;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    color: var(--terracota);
+    text-transform: uppercase;
+  }
+  .fase h3 {
+    font-size: 21px;
+    color: var(--azul-noche);
+    margin-bottom: 6px;
+  }
+  .fase .duracion {
+    font-size: 11px;
+    color: var(--blanco);
+    background: var(--terracota);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .fase .objetivo {
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--azul-noche);
+    font-style: italic;
+  }
+  .fase ul { padding-left: 0; list-style: none; }
+  .fase li {
+    margin-bottom: 12px;
+    padding-left: 26px;
+    position: relative;
+  }
+  .fase li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--dorado-oscuro);
+    font-size: 13px;
+  }
+
+  /* ===== MODALIDAD ===== */
+  .modalidad-box {
+    background: var(--grad-fondo);
+    color: var(--blanco);
+    border-radius: 18px;
+    padding: 44px;
+  }
+  .modalidad-box h3 {
+    color: var(--dorado-claro);
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .modalidad-box p { margin-bottom: 14px; color: var(--crema); }
+  .modalidad-box strong { color: var(--blanco); }
+
+  /* ===== INVERSION ===== */
+  table.inversion {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanco);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -20px rgba(10,10,10,0.2);
+  }
+  table.inversion tr { border-bottom: 1px solid rgba(164,131,72,0.15); }
+  table.inversion tr:last-child { border-bottom: none; }
+  table.inversion td {
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+  table.inversion td:first-child {
+    font-weight: 700;
+    color: var(--azul-noche);
+    width: 38%;
+  }
+  table.inversion td:last-child { color: var(--terracota); }
+  table.inversion tr.total td {
+    background: var(--crema);
+    font-size: 18px;
+  }
+  table.inversion tr.total td:first-child { color: var(--azul-noche); }
+  table.inversion tr.total td:last-child {
+    font-family: 'Michelia', serif;
+    font-size: 26px;
+    color: var(--dorado-oscuro);
+  }
+
+  .nota-credito {
+    margin-top: 24px;
+    background: var(--blanco);
+    border: 1.5px dashed var(--dorado-oscuro);
+    border-radius: 14px;
+    padding: 22px 26px;
+    font-size: 14.5px;
+    color: var(--azul-noche);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .nota-credito .asterisco {
+    font-family: 'Michelia', serif;
+    font-size: 28px;
+    color: var(--dorado-oscuro);
+    line-height: 1;
+  }
+  .nota-credito strong { color: var(--terracota); }
+
+  /* ===== PILARES ===== */
+  .pilares {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .pilar {
+    background: var(--blanco);
+    border-radius: 14px;
+    padding: 28px 22px;
+    text-align: center;
+    border-top: 3px solid var(--dorado-medio);
+    box-shadow: 0 10px 24px -18px rgba(10,10,10,0.18);
+  }
+  .pilar h4 {
+    font-family: 'Michelia', serif;
+    color: var(--azul-noche);
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  .pilar p { font-size: 13.5px; color: #4a5568; }
+
+  /* ===== QUIENES SOMOS ===== */
+  .equipo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .persona {
+    background: var(--azul-noche);
+    color: var(--crema);
+    border-radius: 16px;
+    padding: 0 0 28px;
+    overflow: hidden;
+  }
+  .persona-foto {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 22px;
+  }
+  .persona h4 {
+    font-family: 'Michelia', serif;
+    color: var(--dorado-claro);
+    font-size: 20px;
+    margin: 0 28px 10px;
+  }
+  .persona p { font-size: 14px; margin: 0 28px; }
+
+  .frase {
+    text-align: center;
+    max-width: 600px;
+    margin: 60px auto 0;
+    font-family: 'Michelia', serif;
+    font-size: 22px;
+    color: var(--azul-noche);
+    line-height: 1.6;
+  }
+  .frase span { display: block; }
+  .frase .firma {
+    margin-top: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--terracota);
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 50px;
+    color: #8a8a8a;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 680px) {
+    .hero h1 { font-size: 28px; }
+    .fase { grid-template-columns: 1fr; }
+    .fase-num { text-align: left; }
+    .pilares, .equipo { grid-template-columns: 1fr; }
+    table.inversion td { padding: 14px 16px; font-size: 14px; }
+    table.inversion tr.total td:last-child { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <img class="icono" src="assets/icono.png" alt="Mujer Alquímica Digital">
+      <div class="eyebrow">Mujer Alquímica Digital</div>
+      <h1>Roadmap Estratégico</h1>
+      <p class="subtitle">Expansión y Sostenibilidad de tu Ecosistema Digital</p>
+      <p class="subtitle" style="margin-top:8px; font-size:14px; opacity:0.85;">Acompañamiento 1:1 para la creación de tu modelo de negocio digital<br>en paralelo a tu entorno corporativo.</p>
+      <div class="for">Preparada para<strong>Mariale</strong></div>
+    </div>
+  </section>
+
+  <!-- MISIÓN -->
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Misión del Programa</h2>
+      <div class="section-divider"></div>
+      <div class="mision-box">
+        <span class="label">Propósito</span>
+        Darle estructura, orden y viabilidad técnica a tu mensaje de Segundas Oportunidades, construyendo un negocio digital de alto valor que te permita canalizar a las mujeres que ya te están buscando, sosteniendo tu estilo de vida actual desde la ligereza, la automatización y la certeza.
+      </div>
+    </div>
+  </section>
+
+  <!-- FASES -->
+  <section class="alt">
+    <div class="wrap">
+      <h2 class="section-title">Fases del Acompañamiento</h2>
+      <div class="section-divider"></div>
+
+      <div class="fases-track">
+      <div class="fase">
+        <div class="fase-num"><div class="circulo"><span>01</span></div><small>Semanas 1-2</small></div>
+        <div>
+          <h3>Arquitectura y Modelo de Negocio</h3>
+          <span class="duracion">Fase 1</span>
+          <p class="objetivo">Diseñar la estructura lógica y financiera de tu negocio sin dejar nada al azar.</p>
+          <ul>
+            <li>Definición de tu Clienta Ideal: la mujer corporativa y racional que ya está comenzando a conectar con su intuición y sus emociones, en busca de integrar ambos mundos.</li>
+            <li>Diseño de tu Escalera de Valor: estructura de infoproductos y mentoría premium desde tu historia real.</li>
+            <li>Fijación de precios estratégicos alineados a tu nivel de autoridad y experiencia.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fase">
+        <div class="fase-num"><div class="circulo"><span>02</span></div><small>Semanas 3-5</small></div>
+        <div>
+          <h3>Narrativa y Posicionamiento</h3>
+          <span class="duracion">Fase 2</span>
+          <p class="objetivo">Transformar tu historia de quiebre, resiliencia y reconexión en un mensaje magnético de ventas que hable directamente a la mujer que eres tú hace unos años.</p>
+          <ul>
+            <li>Estructuración de tu Storytelling Emocional: la transición de lo mental a lo sentido, del hacer al ser, y cómo eso cambió todo en tu vida.</li>
+            <li>Estrategia de contenidos y pilares de comunicación para posicionarte como la autoridad que demuestra que sí es posible ser una mujer corporativa y mental, y al mismo tiempo vivir desde la intuición y las emociones.</li>
+            <li>Voz de marca definida: clara, auténtica y coherente con quien eres hoy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fase">
+        <div class="fase-num"><div class="circulo"><span>03</span></div><small>Semanas 6-10</small></div>
+        <div>
+          <h3>Ecosistema Técnico y Sostenibilidad</h3>
+          <span class="duracion">Fase 3</span>
+          <p class="objetivo">Implementar los sistemas digitales para que el negocio funcione con el menor esfuerzo operativo de tu parte.</p>
+          <ul>
+            <li>Estructura de tu embudo de ventas de alto valor, basado en el principio de reciprocidad: talleres o diagnósticos que atraigan a tu clienta ideal.</li>
+            <li>Automatización de herramientas clave para que el negocio sea un espacio de disfrute y libertad, no una segunda carga de tiempo.</li>
+            <li>Negocio digital listo para rodar: arquitectura e implementación técnica completa.</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALIDAD -->
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Modalidad de Entrega</h2>
+      <div class="section-divider"></div>
+      <div class="modalidad-box">
+        <h3>Implementación Completa — Ecosistema Llave en Mano</h3>
+        <p>Para garantizar que mantengas tu enfoque en tu rol actual y en tu proceso de evolución con total ligereza, nos encargamos de la arquitectura y la implementación técnica.</p>
+        <p>Tú no tendrás que descifrar herramientas ni configurar sistemas. Te entregamos tu estructura digital completamente en orden y lista para funcionar.</p>
+        <p><strong>Este acompañamiento está diseñado bajo una postura de alta confidencialidad y respeto por tu tiempo actual.</strong> Trabajamos mediante un cronograma de entregables claro, asegurando que cada paso que des sea firme, seguro y libre de la ansiedad de la improvisación.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVERSIÓN -->
+  <section class="alt">
+    <div class="wrap">
+      <h2 class="section-title">Inversión</h2>
+      <div class="section-divider"></div>
+      <table class="inversion">
+        <tr><td>Duración</td><td>2.5 a 3 meses</td></tr>
+        <tr><td>Modalidad</td><td>Acompañamiento 1:1</td></tr>
+        <tr class="total"><td>Inversión total</td><td>$3,288 USD*</td></tr>
+        <tr><td>Forma de pago</td><td>3 pagos de $1,096 USD</td></tr>
+        <tr><td>Primer pago</td><td>Al confirmar tu lugar</td></tr>
+        <tr><td>Segundo pago</td><td>Al inicio de la Fase 2</td></tr>
+        <tr><td>Tercer pago</td><td>Al inicio de la Fase 3</td></tr>
+      </table>
+
+      <div class="nota-credito">
+        <span class="asterisco">*</span>
+        <span>
+          <strong>Nota importante:</strong> Como ya invertiste en la creación de tu marca, los <strong>$497 USD</strong> de ese servicio se descuentan directamente de esta inversión. Ese trabajo ya realizado queda incluido y reconocido dentro de este acompañamiento — no se paga dos veces por lo que ya construimos juntas.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ MAD -->
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Por qué Mujer Alquímica Digital</h2>
+      <div class="section-divider"></div>
+      <div class="pilares">
+        <div class="pilar">
+          <h4>Sagrado Femenino</h4>
+          <p>Tu historia de reconexión como herramienta de atracción magnética.</p>
+        </div>
+        <div class="pilar">
+          <h4>Somático</h4>
+          <p>Un negocio construido desde tu ritmo, no contra él.</p>
+        </div>
+        <div class="pilar">
+          <h4>Marketing Digital</h4>
+          <p>Estructura y automatización que funcionan sin tu presencia constante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section class="alt">
+    <div class="wrap">
+      <h2 class="section-title">Quiénes Somos</h2>
+      <div class="section-divider"></div>
+      <div class="equipo">
+        <div class="persona">
+          <img class="persona-foto" src="assets/Mimi-sentada.png" alt="Mimi">
+          <h4>Mimi</h4>
+          <p>Terapeuta especializada en trabajo somático, Sagrado Femenino y procesos de transformación profunda. Acompaña a mujeres a reconectar con su cuerpo, su verdad y su relación con el dinero desde un lugar real de merecimiento.</p>
+        </div>
+        <div class="persona">
+          <img class="persona-foto" src="assets/Ale-traje-negro.PNG" alt="Ale">
+          <h4>Ale</h4>
+          <p>Publicista y estratega creativa especializada en marca, comunicación y arquitectura de negocio digital. Ayuda a mujeres a encontrar su voz, estructurar su mensaje y construir un negocio que las represente auténticamente.</p>
+        </div>
+      </div>
+
+      <div class="frase">
+        <span>"La espiritualidad sin estructura es caos.</span>
+        <span>El marketing sin cuerpo es veneno."</span>
+        <div class="firma">— Mimi y Ale, Mujer Alquímica Digital</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Mujer Alquímica Digital · Donde la Estrategia encuentra su Cuerpo<br>
+    © 2026 Mujer Alquímica Digital · Todos los derechos reservados
+  </footer>
+
+</body>
+</html>
